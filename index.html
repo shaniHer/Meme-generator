@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>meme-generator</title>
+</head>
+
+<body onload="onInit()">
+    <header class="main-header main-color">
+        <div class="header-container flex space-between align-center">
+            <div class="logo"><img src="icons/LOGO.png"></div>
+            <ul class="main-nav clean-list flex">
+                <li class="gallery-link"><a onclick="onGotoGallery()">Gallery</a></li>
+                <li class="memes-link"><a onclick="onGotoMemes()">Memes</a></li>
+            </ul>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="gallery">
+            <div class="gallery-container">
+            </div>
+        </div>
+        <div class="editor hidden">
+            <div class="editor-container flex">
+                <div class="canvas-container">
+                    <canvas id="my-canvas" height="450" width="450"></canvas>
+                </div>
+                <div class="controls-container grid">
+                    <input class="text-input" type="text" oninput="onEditText(this.value)">
+                    <div class="btn move-up" onclick="onMoveLine('up')"><img src="icons/up-arrow.png"></div>
+                    <div class="btn move-down" onclick="onMoveLine('down')"><img src="icons/down-arrow.png"></div>
+                    <div class="btn switch-lines" onclick="onSwitchLine()"><img src="icons/switch.png"></div>
+                    <!-- <div class="btn add-line"><img src="icons/add.png"></div>
+                    <div class="btn delete-line"><img src="icons/trash.png"></div> -->
+                    <div class="empty-line1"></div>
+                    <div class="btn scale-up" onclick="onScaleFont('up')"><img src="icons/increase-font.png"></div>
+                    <div class="btn scale-down" onclick="onScaleFont('down')"><img src="icons/decrease-font.png"></div>
+                    <div class="btn align-left" onclick="onSetTextAlign('right')"><img src="icons/align-left.png"></div>
+                    <div class="btn align-center" onclick="onSetTextAlign('center')"><img src="icons/align-center.png">
+                    </div>
+                    <div class="btn align-right" onclick="onSetTextAlign('left')"><img src="icons/align-right.png">
+                    </div>
+                    <select class="font btn" name="font" id="font" oninput="onSetFont(this.value)">
+                        <option value="impact">Impact</option>
+                        <option value="monospace">Monospace</option>
+                        <option value="arial">Arial</option>
+                    </select>
+                    <input class="stroke-color" type="color" oninput="onSetColor(this.value)">
+                    <div class="btn btn-download"><a href="#" onclick="onDownloadImg(this)"
+                            download="my-meme.jpg">DOWNLOAD</a></div>
+                    <div class="btn save" onclick="onSaveMeme()">SAVE</div>
+                    <form class="share btn" action="" method="POST" enctype="multipart/form-data"
+                        onsubmit="uploadImg(this, event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <button class="btn btn-share" type="submit">SHARE</button>
+                    </form>
+                    <div class="facebook-link"></div>
+                </div>
+            </div>
+        </div>
+        <div class="stored-memes hidden">
+            <div class="memes-container"></div>
+        </div>
+    </main>
+    <footer class="main-footer flex align-center flex-column space-between main-color">
+        <div>
+            <div class="logo"><img src="icons/LOGO.png"></div>
+        </div>
+        <div>all rights reserved</div>
+    </footer>
+    <script src="js/storage-service.js"></script>
+    <script src="js/upload-service.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/controller.js"></script>
+</body>
+
+</html>
